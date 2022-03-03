@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Pay with paypal - JSON World</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">    
+    <link rel="stylesheet" href="css/style.css">    
+</head>
+<body class="container-fluid">
+
+    <div class="row">
+        <div class="header">
+            <div class="col-md-4">
+                Hello <%= response.userData.name  %>
+            </div>
+            
+        </div>
+    </div>
+
+    <div class="row productContainer">
+
+            <% response.products.forEach(function(products) { %>
+                
+                <div class="col-md-12 product">
+                    <div class="col-md-4">
+                        <img height="200" width="150" src="http://localhost:3000/static/image/<%= products.image %>">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="col-md-8">
+                            <h3 class="productName"><%= products.name %></h3>
+                        </div>
+                        <div class="col-md-4">
+                            <h3 class="productPrice"><%= products.price %> USD</h3> 
+                        </div>
+                        <div class="col-md-12">
+                            <p class="productDescription" ><%= products.description %></p>
+                            <form class="form-horizontal" role="form" id="paypalForm" method="post" action="/paynow">
+                                <button class="btn btn-primary">Buy Now</button>
+                                <input type="hidden" value="<%= products.price %>" name="price"/>
+                                <input type="hidden" value="<%= products._id %>" name="productId"/>
+                                <input type="hidden" value="<%= products.name %>" name="productName"/>
+                                
+                            </form>
+                        </div>
+                    </div>                   
+                </div>
+                  
+            <% }); %>
+        </div>
+</body>
+</html>

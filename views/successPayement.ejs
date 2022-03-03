@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Pay with paypal - JSON World</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">    
+    <link rel="stylesheet" href="css/style.css">    
+</head>
+<body>
+
+    <div class="header">
+        <div class="col-md-4">
+            Hello <%= response.userData.name %>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="row PaymentInfoCard">
+
+            <div class="col-md-12">
+                <div class="alert <% if(response.error) { %> alert-danger <% } else{ %> alert-success <% } %>">
+                    <strong> <%= response.message %></strong>
+                </div>       
+            </div>
+
+        </div>     
+    </div>
+</body>
+</html>
